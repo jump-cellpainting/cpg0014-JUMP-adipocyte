@@ -69,7 +69,7 @@ options:
   float_format: "%.5g"
   samples: all
 ---
-batch: 2022_11_28_Batch2
+batch: 2022_11_28_Batch3
 plates:
   - name: BR00136507
     process: true
