@@ -1,0 +1,122 @@
+---
+pipeline: REPO1
+output_dir: profiles
+platemap_well_column: Metadata_well_position
+compartments:
+  - cells
+  - cytoplasm
+  - nuclei
+aggregate:
+  perform: false
+  plate_column: Metadata_Plate
+  well_column: Metadata_Well
+  method: median
+  fields: all
+  image_feature_categories:
+    - Count
+    - Intensity
+annotate:
+  perform: true
+  well_column: Metadata_Well
+  external :
+    perform: false
+    file: <metadata file name>
+    merge_column: <Column to merge on>
+normalize:
+  perform: true
+  method: mad_robustize
+  features: infer
+  mad_robustize_fudge_factor: 0
+  image_features: true
+normalize_negcon:
+  perform: false
+  method: mad_robustize
+  features: infer
+  mad_robustize_fudge_factor: 0
+  image_features: true
+feature_select:
+  perform: true
+  features: infer
+  level: batch
+  gct: true
+  image_features: true
+  operations:
+    - variance_threshold
+    - correlation_threshold
+    - drop_na_columns
+    - blocklist
+feature_select_negcon:
+  perform: false
+  features: infer
+  level: batch
+  gct: true
+  image_features: true
+  operations:
+    - variance_threshold
+    - correlation_threshold
+    - drop_na_columns
+    - blocklist
+quality_control:
+  perform: true
+  summary:
+    perform: true
+    row: Metadata_Row
+    column: Metadata_Col
+  heatmap:
+    perform : true
+options:
+  compression: gzip
+  float_format: "%.5g"
+  samples: all
+---
+batch: 2022_11_28_Batch5
+plates:
+  - name: BR00112347
+    process: true
+  - name: TC00660047
+    process: true
+  - name: BR00113444         
+    process: true
+  - name: BR00113445         
+    process: true
+  - name: BR00114609         
+    process: true
+  - name: BR00113442         
+    process: true
+  - name: BR00110730         
+    process: true
+  - name: BR00114585         
+    process: true
+  - name: BR00114584         
+    process: true
+  - name: BR00114586         
+    process: true
+  - name: BR00110725         
+    process: true
+  - name: BR00110726         
+    process: true
+  - name: BR00110727         
+    process: true
+  - name: BR00110728         
+    process: true
+  - name: BR00110720         
+    process: true
+  - name: BR00110721         
+    process: true
+  - name: BR00110722         
+    process: true
+  - name: BR00110723         
+    process: true
+  - name: BR00113443         
+    process: true
+  - name: TC00660048         
+    process: true
+  - name: BR00113446         
+    process: true
+  - name: BR00113441         
+    process: true
+  - name: BR00110729         
+    process: true
+  - name: BR00110724         
+    process: true
+process: true
