@@ -2,3 +2,5 @@
     remote = s3storage
 ['remote "s3storage"']
     url = s3://cellpainting-gallery/cpg0014-jump-adipocyte/broad/workspace/software/jump-adipocyte_DVC
+    profile = jump-cp-role-jump-cellpainting
+    acl = bucket-owner-full-control
